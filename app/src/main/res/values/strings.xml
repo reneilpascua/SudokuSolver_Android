@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Sudoku Solver</string>
+    <string name="enterSudoku">Enter a Sudoku</string>
+</resources>
