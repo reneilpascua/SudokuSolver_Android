@@ -30,7 +30,6 @@ public class EnterSudokuActivity2 extends AppCompatActivity {
         rv = (RecyclerView) findViewById(R.id.rv_sudoku);
         rv.setLayoutManager(new GridLayoutManager(this,NUMBER_OF_COLUMNS));
 
-        a = new CellAdapter2(this, cells, false);
         refreshGrid();
     }
 
@@ -41,6 +40,7 @@ public class EnterSudokuActivity2 extends AppCompatActivity {
     }
 
     private void refreshGrid() {
+        a = new CellAdapter2(this, cells, false);
         rv.setAdapter(a);
     }
 
@@ -64,5 +64,10 @@ public class EnterSudokuActivity2 extends AppCompatActivity {
         Intent i = new Intent(this, SudokuSolutionActivity.class);
         i.putExtra("cells",cells);
         startActivity(i);
+    }
+
+    public void clearBoard(View view) {
+        cells = new Cell[81];
+        refreshGrid();
     }
 }

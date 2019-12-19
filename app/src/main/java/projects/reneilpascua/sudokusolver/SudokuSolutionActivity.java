@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -80,5 +81,13 @@ public class SudokuSolutionActivity extends AppCompatActivity {
     private void refreshGrid() {
         a = new CellAdapter2(this, cells, true);
         rv.setAdapter(a);
+    }
+
+    public void enterNewSudoku(View view) {
+        finish();
+    }
+
+    public void getDetails(View view) {
+
     }
 }

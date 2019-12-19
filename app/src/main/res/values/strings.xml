@@ -5,4 +5,7 @@
     <string name="pleaseEnter">Please enter the Sudoku\'s initial values:</string>
     <string name="zero">0</string>
     <string name="solving">Solving Sudoku</string>
+    <string name="reenter">New Sudoku</string>
+    <string name="details">solution details</string>
+    <string name="clear">clear</string>
 </resources>
