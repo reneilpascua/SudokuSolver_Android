@@ -1,6 +1,7 @@
 package projects.reneilpascua.sudokusolver;
 
 import android.content.Context;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,10 @@ public class CellAdapter extends BaseAdapter {
     private Cell[] cells;
     private boolean enteringInitialVals;
 
-    public CellAdapter(Context c, Cell[] s, boolean e) {
+    public CellAdapter(Context c, Cell[] s, boolean enteringInitialVals) {
         context = c;
         cells = s;
-        enteringInitialVals = e;
+        this.enteringInitialVals = enteringInitialVals;
     }
 
     @Override
@@ -36,22 +37,6 @@ public class CellAdapter extends BaseAdapter {
         return 0;
     }
 
-//    @Override
-//    public View getView(int i, View convertView, ViewGroup parent) {
-//        Cell c = cells[i];
-//
-//        if (convertView==null) {
-//            LayoutInflater inf = LayoutInflater.from(context);
-//            convertView = inf.inflate(R.layout.square_layout, null);
-//        }
-//
-//        EditText et_value = (EditText) convertView.findViewById(R.id.et_value);
-//        et_value.setText(Integer.toString(c.num));
-//        et_value.setEnabled(true);
-//        et_value.setFocusable(true);
-//
-//        return convertView;
-//    }
 
     @Override
     public View getView(int i, View convertView, ViewGroup parent) {
@@ -69,11 +54,19 @@ public class CellAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        if (!enteringInitialVals) {
-            holder.et.setText(
-                    (c.num == 0) ? "" :
-                            Integer.toString(c.num)
-            );
+//        View v;
+//        if (convertView==null) {
+//            v = new View(context);
+//            v = inflater.inflate(R.layout.square_layout,null);
+//        } else {
+//            v = (View) convertView;
+//        }
+//        return v;
+
+
+
+        if (!enteringInitialVals) { // set text only if not entering initial vals
+            holder.et.setText(Integer.toString(c.num));
         }
         return convertView;
     }
@@ -81,4 +74,5 @@ public class CellAdapter extends BaseAdapter {
     public class ViewHolder {
         EditText et;
     }
+
 }

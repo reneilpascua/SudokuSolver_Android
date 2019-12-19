@@ -30,7 +30,8 @@
         android:layout_height="0px"
         android:layout_weight="9"
         android:numColumns="9"
-        android:gravity="center"/>
+        android:gravity="center"
+        />
 
 
     <LinearLayout
@@ -42,7 +43,7 @@
             android:text="@string/solve"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="btnfn" />
+            android:onClick="setCellsFromInput" />
 
     </LinearLayout>
 
