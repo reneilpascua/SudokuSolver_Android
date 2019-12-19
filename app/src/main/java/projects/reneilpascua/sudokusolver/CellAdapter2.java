@@ -7,12 +7,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import projects.reneilpascua.sudokusolver.board.Cell;
 
 public class CellAdapter2 extends RecyclerView.Adapter<CellAdapter2.ViewHolder> {
 
+    Context ctx;
     private Cell[] mData;
     private LayoutInflater mInflater;
     private boolean bind;
@@ -20,6 +22,7 @@ public class CellAdapter2 extends RecyclerView.Adapter<CellAdapter2.ViewHolder> 
     // data is passed into the constructor
     CellAdapter2(Context context, Cell[] data, boolean bind) {
         this.mInflater = LayoutInflater.from(context);
+        ctx = context;
         this.mData = data;
         this.bind = bind;
     }
@@ -35,7 +38,14 @@ public class CellAdapter2 extends RecyclerView.Adapter<CellAdapter2.ViewHolder> 
     // binds the data to the TextView in each cell
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (bind) holder.et.setText(Integer.toString(mData[position].num));
+        if (bind) {
+            holder.et.setText(Integer.toString(mData[position].num));
+            if (mData[position].isInit) {
+                holder.et.setBackgroundColor(
+                        ContextCompat.getColor(ctx, R.color.papyrusDark)
+                );
+            }
+        }
     }
 
     // total number of cells

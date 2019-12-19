@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="papyrus">#f6eee6</color>
+    <color name="papyrusDark">#ddbea0</color>
 </resources>
