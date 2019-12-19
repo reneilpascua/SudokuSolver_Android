@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -91,5 +92,30 @@ public class SudokuSolutionActivity extends AppCompatActivity {
 
     public void getDetails(View view) {
 
+        // custom dialog
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.solution_details_dialog);
+        dialog.setTitle("a s d f");
+
+        // set the custom dialog components - text, image and button
+        TextView tv_solveStatus = (TextView) dialog.findViewById(R.id.tv_solveStatus);
+        tv_solveStatus.setText(solnDetails[0]);
+        TextView tv_numIter = (TextView) dialog.findViewById(R.id.tv_numIter);
+        tv_numIter.setText("iterations: "+solnDetails[1]);
+        TextView tv_numBT = (TextView) dialog.findViewById(R.id.tv_numBT);
+        tv_numBT.setText("number of backtracks:"+ solnDetails[2]);
+
+//        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+//        // if button is clicked, close the custom dialog
+//        dialogButton.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//            }
+//        });
+
+        dialog.show();
     }
+
+
 }

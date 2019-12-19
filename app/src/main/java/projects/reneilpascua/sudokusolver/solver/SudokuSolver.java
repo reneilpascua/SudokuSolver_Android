@@ -77,7 +77,7 @@ public class SudokuSolver {
         }
 
         if (solved) {
-            solnDetails[0] = "solved!";
+            solnDetails[0] = "a solution was found";
             solnDetails[1] = Integer.toString(iter);
             solnDetails[2] = Integer.toString(numBT);
 

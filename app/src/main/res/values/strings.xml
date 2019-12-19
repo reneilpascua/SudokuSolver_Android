@@ -8,4 +8,5 @@
     <string name="reenter">New Sudoku</string>
     <string name="details">solution details</string>
     <string name="clear">clear</string>
+    <string name="solnDetailsTitle">Solution Details</string>
 </resources>
