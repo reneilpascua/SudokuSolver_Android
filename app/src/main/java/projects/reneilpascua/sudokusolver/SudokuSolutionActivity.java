@@ -47,7 +47,11 @@ public class SudokuSolutionActivity extends AppCompatActivity {
         solnDetails = sbs.solve();
 
         updateSolution();
-        solveStatus.setText("SOLVED!!");
+        if (solnDetails[0].equals("a solution was found")) {
+            solveStatus.setText("Solved!! :)");
+        } else {
+            solveStatus.setText("No solution found :(");
+        }
     }
 
     private void updateSolution() {
