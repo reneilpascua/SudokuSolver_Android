@@ -16,12 +16,13 @@ import projects.reneilpascua.sudokusolver.solver.SudokuSolver;
 
 public class SudokuSolutionActivity extends AppCompatActivity {
 
+    SudokuBoard sb;
     Cell[] cells;
     RecyclerView rv;
     TextView solveStatus;
     CellAdapter2 a;
     final static int NUMBER_OF_COLUMNS = 9;
-    final static int REFRESH_FRAME = 5;
+    String[] solnDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +39,19 @@ public class SudokuSolutionActivity extends AppCompatActivity {
 
         refreshGrid();
 
-        SudokuBoard sb = new SudokuBoard();
+        sb = new SudokuBoard();
         sb.setValues(convertTo2D(cells));
 
         SudokuSolver sbs = new SudokuSolver(sb);
-        sbs.solve();
+        solnDetails = sbs.solve();
 
-        sb.printBoard();
+        updateSolution();
+        solveStatus.setText("SOLVED!!");
+    }
 
+    private void updateSolution() {
         cells = convertTo1D(sb.cells);
         refreshGrid();
-
-        solveStatus.setText("SOLVED!!");
     }
 
     private Cell[][] convertTo2D(Cell[] cells) {

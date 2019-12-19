@@ -15,16 +15,15 @@ public class SudokuSolver {
         this.sb = sb;
     }
 
-    public boolean solve(
-//            EditText[][] ets
-            ) {
-        // lock all edittexts from user interaction
-//        enableEditTexts(ets, false);
+    public String[] solve() {
 
+        String[] solnDetails = new String[3];
+
+        boolean solved = false;
         int numBT = 0;
         int[] pos = {0,0};
+        int iter = 0;
         try {
-            int iter = 0;
             // solve loop
             while (true) {
                 System.out.println("iter #" + iter);
@@ -68,12 +67,28 @@ public class SudokuSolver {
             System.out.println("\nSolved!");
             System.out.println("number of backtracks: "+numBT);
             sb.printBoard();
-            return true;
+
+            solved=true;
         } catch (Exception e) { // any other caught exceptions terminate the algorithm
             System.out.println("Problem occured; Algorithm terminated.");
             e.printStackTrace();
-            return false;
+
+            solved=false;
         }
+
+        if (solved) {
+            solnDetails[0] = "solved!";
+            solnDetails[1] = Integer.toString(iter);
+            solnDetails[2] = Integer.toString(numBT);
+
+        } else {
+            solnDetails[0] = "no solution found";
+            for (int i=1; i<solnDetails.length; i++) {
+                solnDetails[i] = "n/a";
+            }
+        }
+
+        return solnDetails;
     }
 
     private boolean increment(int[] pos) {

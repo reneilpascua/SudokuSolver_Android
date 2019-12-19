@@ -24,7 +24,6 @@ public class EnterSudokuActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_sudoku2);
 
-        cells = new Cell[81];
         getNewCells();
 
         rv = (RecyclerView) findViewById(R.id.rv_sudoku);
@@ -34,6 +33,7 @@ public class EnterSudokuActivity2 extends AppCompatActivity {
     }
 
     private void getNewCells() {
+        cells = new Cell[81];
         for (int i=0; i<81; i++) {
             cells[i] = new Cell();
         }
@@ -67,7 +67,7 @@ public class EnterSudokuActivity2 extends AppCompatActivity {
     }
 
     public void clearBoard(View view) {
-        cells = new Cell[81];
+        getNewCells();
         refreshGrid();
     }
 }
