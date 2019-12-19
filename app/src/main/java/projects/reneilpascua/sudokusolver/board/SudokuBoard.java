@@ -1,28 +1,28 @@
 package projects.reneilpascua.sudokusolver.board;
 
 public class SudokuBoard {
-    public Square [][] squares;
+    public Cell[][] cells;
     
     public SudokuBoard() {
-        squares = new Square[9][9];
-        initSquares();
+        cells = new Cell[9][9];
+        initCells();
     }
     
-    public void initSquares() {
+    public void initCells() {
         for (int i=0; i<9; i++) {
             for (int j=0; j<9; j++) {
-                squares[i][j] = new Square();
+                cells[i][j] = new Cell();
             }
         }
     }
 
     public void setInit(int x, int y, int value) {
         if (value <= 0) {
-            squares[x][y].num = 0;
-            squares[x][y].isInit = false;
+            cells[x][y].num = 0;
+            cells[x][y].isInit = false;
         } else if (value <= 9) {
-            squares[x][y].num = value;
-            squares[x][y].isInit = true;
+            cells[x][y].num = value;
+            cells[x][y].isInit = true;
         }
     }
     
@@ -39,7 +39,7 @@ public class SudokuBoard {
             if (i%3==0) System.out.print("\n");
             for (int j=0; j<9; j++) {
                 if (j%3==0) System.out.print("  ");
-                System.out.print(squares[i][j].num+" ");
+                System.out.print(cells[i][j].num+" ");
             }
             System.out.print("\n");
         }

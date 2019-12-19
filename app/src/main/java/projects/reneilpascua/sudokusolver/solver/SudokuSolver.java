@@ -1,8 +1,8 @@
 package projects.reneilpascua.sudokusolver.solver;
 
 //import android.widget.EditText;
+import projects.reneilpascua.sudokusolver.board.Cell;
 import projects.reneilpascua.sudokusolver.board.SudokuBoard;
-import projects.reneilpascua.sudokusolver.board.Square;
 
 public class SudokuSolver {
 
@@ -28,17 +28,17 @@ public class SudokuSolver {
             // solve loop
             while (true) {
                 System.out.println("iter #" + iter);
-                // 1.) go to next non-init square, *including current*
+                // 1.) go to next non-init cell, *including current*
                 forward(pos);
                 System.out.println("position: "+pos[0]+", "+pos[1]);
                 
-                // 2.) increment that square
+                // 2.) increment that cell
                 boolean incremented = increment(pos);
 
                 // 2_1.) update the value in the GUI
-//                ets[pos[0]][pos[1]].setText( Integer.toString(sb.squares[pos[0]][pos[1]].num) );
+//                ets[pos[0]][pos[1]].setText( Integer.toString(sb.cells[pos[0]][pos[1]].num) );
 
-                // 3a.) if we had to reset value to 0, backtrack to non-init square
+                // 3a.) if we had to reset value to 0, backtrack to non-init cell
                 if (!incremented) {
                     prevPos(pos);
                     backtrack(pos);
@@ -77,11 +77,11 @@ public class SudokuSolver {
     }
 
     private boolean increment(int[] pos) {
-        if (sb.squares[pos[0]][pos[1]].num == 9) {
-            sb.squares[pos[0]][pos[1]].num = 0;
+        if (sb.cells[pos[0]][pos[1]].num == 9) {
+            sb.cells[pos[0]][pos[1]].num = 0;
             return false;
         } else {
-            sb.squares[pos[0]][pos[1]].num++;
+            sb.cells[pos[0]][pos[1]].num++;
             return true;
         }
     }
@@ -101,12 +101,12 @@ public class SudokuSolver {
 
 
     private void forward(int[] pos) throws Exception {
-        Square cur = sb.squares[pos[0]][pos[1]];
-        // go forward until non-init square
+        Cell cur = sb.cells[pos[0]][pos[1]];
+        // go forward until non-init cell
         while (cur.isInit) {
             try {
                 nextPos(pos);
-                cur = sb.squares[pos[0]][pos[1]];
+                cur = sb.cells[pos[0]][pos[1]];
             } catch (SolvedException e) {
                 throw new SolvedException();
             } catch (Exception e) {
@@ -116,11 +116,11 @@ public class SudokuSolver {
         }
     }
     private void backtrack(int[] pos) throws Exception {
-        Square cur = sb.squares[pos[0]][pos[1]];
+        Cell cur = sb.cells[pos[0]][pos[1]];
         while (cur.isInit) {
             try {
                 prevPos(pos);
-                cur = sb.squares[pos[0]][pos[1]];
+                cur = sb.cells[pos[0]][pos[1]];
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new Exception("Algorithm terminated.");
@@ -129,7 +129,7 @@ public class SudokuSolver {
     }
     private void nextPos(int[] pos) throws SolvedException {
         if (pos[0]==8 && pos[1]==8) {
-            // last square, trying to move forward means solution has been found
+            // last cell, trying to move forward means solution has been found
             throw new SolvedException();
         } else if (pos[1]==8){
             pos[0]++;
@@ -140,7 +140,7 @@ public class SudokuSolver {
     }
     private void prevPos(int[] pos) throws Exception {
         if (pos[0]==0 && pos[1]==0) {
-            throw new Exception("Attempt to backtrack before first square."); // can't go back further
+            throw new Exception("Attempt to backtrack before first cell."); // can't go back further
         } else if (pos[1]==0){
             pos[0]--;
             pos[1]=8;
@@ -165,7 +165,7 @@ public class SudokuSolver {
         for (int i=0; i<9; i++) {
             int[] check = new int[9];
             for (int j=0; j<9; j++) {
-                int val = sb.squares[i][j].num;
+                int val = sb.cells[i][j].num;
                 if (val==0) {
                     continue;
                 } else if (check[val-1] == 1) {
@@ -182,7 +182,7 @@ public class SudokuSolver {
         for (int i=0; i<9; i++) {
             int[] check = new int[9];
             for (int j=0; j<9; j++) {
-                int val = sb.squares[j][i].num;
+                int val = sb.cells[j][i].num;
                 if (val==0) {
                     continue;
                 } else if (check[val-1] == 1) {
@@ -202,7 +202,7 @@ public class SudokuSolver {
             int startCol = 3*(sub%3);
             for (int i=startRow; i<(startRow+3); i++) {
                 for (int j=startCol; j<(startCol+3); j++) {
-                    int val = sb.squares[i][j].num;
+                    int val = sb.cells[i][j].num;
                     if (val==0) {
                         continue;
                     } else if (check[val-1]==1) {

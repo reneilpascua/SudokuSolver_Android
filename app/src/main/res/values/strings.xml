@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Sudoku Solver</string>
     <string name="enterSudoku">Enter a Sudoku</string>
+    <string name="solve">Solve</string>
+    <string name="pleaseEnter">Please enter the Sudoku\'s initial values:</string>
 </resources>
