@@ -3,4 +3,6 @@
     <string name="enterSudoku">Enter a Sudoku</string>
     <string name="solve">Solve</string>
     <string name="pleaseEnter">Please enter the Sudoku\'s initial values:</string>
+    <string name="zero">0</string>
+    <string name="solving">Solving Sudoku</string>
 </resources>

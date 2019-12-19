@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import projects.reneilpascua.sudokusolver.board.Cell;
 
 public class CellAdapter extends BaseAdapter {
@@ -34,7 +36,7 @@ public class CellAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
 
@@ -71,7 +73,7 @@ public class CellAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public class ViewHolder {
+    public class ViewHolder  {
         EditText et;
     }
 

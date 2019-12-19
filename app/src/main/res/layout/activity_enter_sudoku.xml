@@ -28,7 +28,7 @@
         android:id="@+id/gv_sudoku"
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:layout_weight="9"
+        android:layout_weight="7"
         android:numColumns="9"
         android:gravity="center"
         />

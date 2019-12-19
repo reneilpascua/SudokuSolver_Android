@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.Display;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -28,7 +29,12 @@ public class EnterSudokuActivity extends AppCompatActivity {
         getNewCells();
         a = new CellAdapter(this, cells, true);
 
+        Display d = getWindowManager().getDefaultDisplay();
+        int width = d.getWidth();
+
         gv = (GridView) findViewById(R.id.gv_sudoku);
+        gv.getLayoutParams().width = (int) (width*0.80);
+
         refreshGrid();
     }
 
@@ -55,15 +61,15 @@ public class EnterSudokuActivity extends AppCompatActivity {
             }
             cells[i].num = a;
         }
-
-        Cell[][] board = convertTo2D(cells);
-        SudokuBoard sb = new SudokuBoard();
-        sb.setValues(board);
+//
+//        Cell[][] board = convertTo2D(cells);
+//        SudokuBoard sb = new SudokuBoard();
+//        sb.setValues(board);
 //        System.out.println(sb);
 
         Intent i = new Intent(this, SudokuSolutionActivity.class);
         i.putExtra("cells",cells);
-        i.putExtra("sb",sb);
+//        i.putExtra("sb",sb);
         startActivity(i);
     }
 

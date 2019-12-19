@@ -15,6 +15,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void enterSudokuBtn(View view) {
-        startActivity(new Intent(this, EnterSudokuActivity.class));
+        startActivity(new Intent(this, EnterSudokuActivity2.class));
     }
 }
