@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import projects.reneilpascua.sudokusolver.board.Cell;
@@ -45,6 +47,9 @@ public class EnterSudokuActivity2 extends AppCompatActivity {
     }
 
     public void goToSolution(View view) {
+
+//        hideKeyboard(this);
+
         for (int i=0; i<81; i++) {
             int a;
             try {
@@ -64,6 +69,17 @@ public class EnterSudokuActivity2 extends AppCompatActivity {
         Intent i = new Intent(this, SudokuSolutionActivity.class);
         i.putExtra("cells",cells);
         startActivity(i);
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public void clearBoard(View view) {
