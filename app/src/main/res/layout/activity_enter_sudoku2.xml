@@ -23,8 +23,8 @@
 
     </LinearLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
+
         android:layout_margin="20dp"
         android:id="@+id/rv_sudoku"
         android:layout_width="match_parent"
@@ -32,6 +32,7 @@
         android:layout_weight="8"
         android:numColumns="9"
         android:gravity="center"
+
         />
 
     <LinearLayout
@@ -51,9 +52,6 @@
             android:layout_height="match_parent"
             android:onClick="goToSolution"
             android:layout_weight="1"/>
-
-
-
     </LinearLayout>
 
 
