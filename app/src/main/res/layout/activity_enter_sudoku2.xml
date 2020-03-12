@@ -47,6 +47,12 @@
             android:layout_weight="1"
             android:onClick="clearBoard"/>
         <Button
+            android:text="@string/goMain"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="goMain"/>
+        <Button
             android:text="@string/solve"
             android:layout_width="0px"
             android:layout_height="match_parent"

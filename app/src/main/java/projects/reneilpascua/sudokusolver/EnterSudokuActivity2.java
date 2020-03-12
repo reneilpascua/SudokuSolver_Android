@@ -86,4 +86,8 @@ public class EnterSudokuActivity2 extends AppCompatActivity {
         getNewCells();
         refreshGrid();
     }
+
+    public void goMain(View view) {
+        startActivity(new Intent(this, MainActivity.class));
+    }
 }

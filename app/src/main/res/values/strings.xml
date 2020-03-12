@@ -10,4 +10,5 @@
     <string name="clear">clear</string>
     <string name="solnDetailsTitle">Solution Details</string>
     <string name="note">NOTE: this algorithm finds just one valid solution, although there could be many valid solutions.</string>
+    <string name="goMain">Go Main</string>
 </resources>

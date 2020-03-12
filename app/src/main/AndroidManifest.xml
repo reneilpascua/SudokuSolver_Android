@@ -4,6 +4,7 @@
 
     <!-- camera and storage permission will be required -->
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
@@ -22,9 +23,14 @@
         </activity>
         <activity android:name=".SudokuSolutionActivity" />
 <!--        <activity android:name=".EnterSudokuActivity" />-->
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:theme="@style/AppThemeBar"/>
 
-        </activity>
+
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"
+            />
+
     </application>
 
 </manifest>
