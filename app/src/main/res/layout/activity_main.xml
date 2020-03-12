@@ -38,7 +38,7 @@
                     <!-- the scanned text will appear here -->
                     <EditText
                         android:id="@+id/et_main"
-                        android:hint="Click + button to add image"
+                        android:hint=""
                         android:autoLink="all"
                         android:padding="5dp"
                         android:textColor="#000"
